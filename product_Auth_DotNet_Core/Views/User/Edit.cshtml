@@ -1,0 +1,20 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.Username</h1> 
+
+<form method="post" asp-action="Edit" asp-controller="User" asp-route-id="@Model.Id">
+    <label asp-for="Id">Id:</label>
+    <input type="number" asp-for="Id" readonly />
+    <label asp-for="Username">Username:</label>
+    <input type="text" asp-for="Username" required />
+    <label asp-for="Password">Password:</label>
+    <input type="password" asp-for="Password" required />
+    <label>Role:</label>
+    <input type="text" asp-for="Role"  readonly  />
+
+    <button type="submit">Update</button>
+</form>
+

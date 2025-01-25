@@ -22,10 +22,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                      @*   <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </li> *@
+                       
                     </ul>
+                    <h3 id="username"></h3>
+                    <span id="logoutbtn"></span>
+                    <span id="usrinfos"></span>
                 </div>
             </div>
         </nav>
@@ -44,6 +48,29 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Get username from Razor and store it in localStorage
+        var username = "@ViewBag.Username";
+
+        if (username) {
+            localStorage.setItem("username", username);  // Store username in localStorage
+        }
+
+        // Retrieve username from localStorage and display it
+        var storedUsername = localStorage.getItem("username");
+        if (storedUsername) {
+            document.getElementById("username").innerText = "Welcome  " + storedUsername;
+            var logoutUrl = '@Url.Action("Logout", "Account")';
+            document.getElementById("logoutbtn").innerHTML = `<a class="nav-link text-dark" href="${logoutUrl}">Logout</a>`; 
+
+            var usrinfoUrl = '@Url.Action("Userinfo", "User")';
+            document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
+        }
+        else {
+            var loginUrl = '@Url.Action("Login", "Account")';
+            document.getElementById("logoutbtn").innerHTML = `<a class="nav-link text-dark" href="${loginUrl}">Login</a>`;
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

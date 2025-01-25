@@ -9,6 +9,6 @@ namespace product_Auth_DotNet_Core.Models
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
-        public string Role { get; set; } = "User";
+        public string Role { get; set; } = "Admin";
     }
 }

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "LogoutRedirect";
+}
+
+<h1>LogoutRedirect</h1>
+
+<script>
+    // Clear localStorage
+    localStorage.removeItem("username");
+
+    // Redirect to login page
+    window.location.href = "/Account/Login";
+</script>
+
+

@@ -1,0 +1,19 @@
+﻿@model List<Product>
+<h2>Product List</h2>
+<a href="/admin/products/create">Add New Product</a>
+<table>
+    <tr><th>Name</th><th>Price</th><th>Actions</th></tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Price</td>
+            <td>
+                <form method="post" action="/admin/products/delete/@product.Id">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
