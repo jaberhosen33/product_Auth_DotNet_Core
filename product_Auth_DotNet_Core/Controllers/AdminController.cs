@@ -6,7 +6,7 @@ using product_Auth_DotNet_Core.Models;
 namespace product_Auth_DotNet_Core.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("admin/products")]
+    [Route("admin/Index")]
     public class AdminController : Controller
     {
         private readonly AppDbContext _context;
@@ -16,9 +16,20 @@ namespace product_Auth_DotNet_Core.Controllers
             _context = context;
         }
 
+        [HttpGet("admininfo")]
+        public IActionResult Admininfo()
+        {
+            var user = _context.Users.Find(TempData["adminId"]);
+
+            return View(user);
+        }
+
+        //product Crud
         [HttpGet]
-        public IActionResult Index(string value) {
+        public IActionResult Index(string value,string role,int id) {
             ViewBag.Username = value;
+            ViewBag.role = role;
+            TempData["adminId"] = id;
             return View(_context.Products.ToList());
             }
 

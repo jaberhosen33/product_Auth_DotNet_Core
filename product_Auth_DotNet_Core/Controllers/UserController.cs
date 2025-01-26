@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using product_Auth_DotNet_Core.Models;
 
 namespace product_Auth_DotNet_Core.Controllers
 {
+    [Authorize(Roles = "User")]
     [Route("user")]
     public class UserController : Controller
     {

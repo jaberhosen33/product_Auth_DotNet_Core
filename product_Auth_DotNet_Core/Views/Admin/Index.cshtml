@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 <h2>Product List</h2>
-<a href="/admin/products/create">Add New Product</a>
+<a asp-action="Create" asp-controller="Admin">Add New Product</a>
 <table>
     <tr><th>Name</th><th>Price</th><th>Actions</th></tr>
     @foreach (var product in Model)

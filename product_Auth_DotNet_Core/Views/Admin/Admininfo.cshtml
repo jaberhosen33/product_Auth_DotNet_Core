@@ -1,0 +1,16 @@
+﻿@model User
+
+<h2>@Model.Username</h2>
+<table>
+    <tr><th>Name</th><th>Role</th><th>Actions</th></tr>
+
+    <tr>
+        <td>@Model.Username</td>
+        <td>@Model.Role</td>
+        <td>
+            <a asp-action="Edit" asp-controller="User" asp-route-id="@Model.Id">Edit</a>
+        </td>
+    </tr>
+
+</table>
+

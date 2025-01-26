@@ -37,10 +37,12 @@ namespace product_Auth_DotNet_Core.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
             string value = user.Username;
+            string role = user.Role;
+
             int id = user.Id;
             if (user.Role == "Admin")
             {
-                return RedirectToAction("Index", "Admin", new { value = value });
+                return RedirectToAction("Index", "Admin", new { value = value, role = role,id=id });
             }
             else
             {

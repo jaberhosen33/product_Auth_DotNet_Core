@@ -20,7 +20,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                           <span id="index"></span>
                         </li>
                       @*   <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
@@ -51,20 +51,35 @@
     <script>
         // Get username from Razor and store it in localStorage
         var username = "@ViewBag.Username";
-
+        var userole = "@ViewBag.role";
+        
         if (username) {
             localStorage.setItem("username", username);  // Store username in localStorage
+            localStorage.setItem("userrole", userole);  // Store username in localStorage
         }
 
         // Retrieve username from localStorage and display it
         var storedUsername = localStorage.getItem("username");
+        var storedUserrole = localStorage.getItem("userrole");
+        console.log(storedUserrole);
         if (storedUsername) {
             document.getElementById("username").innerText = "Welcome  " + storedUsername;
             var logoutUrl = '@Url.Action("Logout", "Account")';
             document.getElementById("logoutbtn").innerHTML = `<a class="nav-link text-dark" href="${logoutUrl}">Logout</a>`; 
 
-            var usrinfoUrl = '@Url.Action("Userinfo", "User")';
-            document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
+            if (storedUserrole === "Admin") {
+                var usrinfoUrl = '@Url.Action("Admininfo", "Admin")';
+                document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
+                var IndexUrl = '@Url.Action("Index", "Admin")';
+                document.getElementById("index").innerHTML = `<a class="nav-link text-dark" href="${IndexUrl}">Home</a>`;
+            }
+            else {
+                var usrinfoUrl = '@Url.Action("Userinfo", "User")';
+                document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
+                var IndexUrl = '@Url.Action("Index", "User")';
+                document.getElementById("index").innerHTML = `<a class="nav-link text-dark" href="${IndexUrl}">Home</a>`;
+            }
+           
         }
         else {
             var loginUrl = '@Url.Action("Login", "Account")';
