@@ -1,9 +1,49 @@
-﻿<h2>Login</h2>
+﻿@* <h2>Login</h2>
 <form method="post" action="/account/login">
     <label>Username:</label>
     <input type="text" name="username" required />
     <label>Password:</label>
     <input type="password" name="password" required />
     <button type="submit">Login</button>
-</form>
+</form> *@
+<style>
+  /*   .login-image {
+        background: url('https://img.freepik.com/free-vector/account-concept-illustration_114360-399.jpg?t=st=1737897633~exp=1737901233~hmac=cd295ea367bb3dbb0a3a915f5afdfa06b1e0b84ed551b5e250482418bdbaf357&w=740') no-repeat center center;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    } */
+</style>
+<div class="container">
+    <div class="row login-container">
+        <!-- Image Column -->
+        <div class="col-md-6 d-none d-md-block">
+            <div class="login-image">
+                <img class="w-100" src="https://img.freepik.com/free-vector/account-concept-illustration_114360-399.jpg?t=st=1737897633~exp=1737901233~hmac=cd295ea367bb3dbb0a3a915f5afdfa06b1e0b84ed551b5e250482418bdbaf357&w=740" alt="Alternate Text" />
+            </div>
+        </div>
 
+        <!-- Form Column -->
+        <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
+            <div class="w-75">
+                <h2 class="text-center mb-4">Login</h2>
+                <form method="post" action="/account/login">
+                    <div class="mb-3">
+                        <label class="form-label">Username:</label>
+                        <input type="text" name="username" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" name="password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

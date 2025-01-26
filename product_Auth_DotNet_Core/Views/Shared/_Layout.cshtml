@@ -29,6 +29,7 @@
                     </ul>
                     <h3 id="username"></h3>
                     <span id="logoutbtn"></span>
+                    <span id="signup"></span>
                     <span id="usrinfos"></span>
                 </div>
             </div>
@@ -66,13 +67,13 @@
             document.getElementById("username").innerText = "Welcome  " + storedUsername;
             var logoutUrl = '@Url.Action("Logout", "Account")';
             document.getElementById("logoutbtn").innerHTML = `<a class="nav-link text-dark" href="${logoutUrl}">Logout</a>`; 
-
+            //admin
             if (storedUserrole === "Admin") {
                 var usrinfoUrl = '@Url.Action("Admininfo", "Admin")';
                 document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
                 var IndexUrl = '@Url.Action("Index", "Admin")';
                 document.getElementById("index").innerHTML = `<a class="nav-link text-dark" href="${IndexUrl}">Home</a>`;
-            }
+            }//user
             else {
                 var usrinfoUrl = '@Url.Action("Userinfo", "User")';
                 document.getElementById("usrinfos").innerHTML = `<a class="nav-link text-dark" href="${usrinfoUrl}">Profile</a>`;
@@ -84,6 +85,8 @@
         else {
             var loginUrl = '@Url.Action("Login", "Account")';
             document.getElementById("logoutbtn").innerHTML = `<a class="nav-link text-dark" href="${loginUrl}">Login</a>`;
+            var signupUrl = '@Url.Action("Signup", "Account")';
+            document.getElementById("signup").innerHTML = `<a class="nav-link text-dark" href="${signupUrl}">Signup</a>`;
         }
     </script>
     @await RenderSectionAsync("Scripts", required: false)

@@ -1,15 +1,41 @@
 ﻿@model List<Product>
-<h2>Product List</h2>
-<table>
-    <tr><th>Name</th><th>Price</th><th>Actions</th></tr>
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td>@product.Name</td>
-            <td>@product.Price</td>
-            <td>
-               
-            </td>
-        </tr>
-    }
-</table>
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">Product List</h2>
+
+    <div class="row">
+        <!-- Table Column -->
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Price.ToString("C")</td>
+                                <td class="text-center">
+                                    <a href="/products/edit/@product.Id" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="/products/delete/@product.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <img src="https://media.istockphoto.com/id/2149142206/vector/poster-with-realistic-metal-trolley-ticket-for-big-discount-shopping-basket-and-eco-paper-bag.jpg?s=1024x1024&w=is&k=20&c=9kLIiG77CaVm3nLMecmwdAFaOCXbLIwhZ2nmZvfsqKg=" alt="Product Display" class="img-fluid rounded shadow">
+        </div>
+    </div>
+</div>
+

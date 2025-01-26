@@ -19,13 +19,16 @@ namespace product_Auth_DotNet_Core.Controllers
         {
             ViewBag.Username = value;
             TempData["id"] = id;
+           
             return View(_context.Products.ToList());
         }
 
         [HttpGet("userinfo")]
         public IActionResult Userinfo()
         {
-            var user = _context.Users.Find(TempData["id"]);
+            int data = Convert.ToInt32(TempData["id"]);
+            
+            var user = _context.Users.Find(data);
             
             return View(user);
         }

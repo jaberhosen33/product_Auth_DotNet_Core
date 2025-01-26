@@ -1,10 +1,38 @@
 ﻿
-<h2>Signup</h2>
+@* <h2>Signup</h2>
 <form method="post" action="/account/signup">
     <label>Username:</label>
     <input type="text" name="Username" required />
     <label>Password:</label>
     <input type="password" name="Password" required />
     <button type="submit">Signup</button>
-</form>
+</form> *@
 
+<div class="container">
+    <div class="row signup-container">
+        <!-- Image Column -->
+        <div class="col-md-6 d-none d-md-block">
+            <div class="signup-image">
+                <img class="w-100" src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-27396.jpg?t=st=1737898029~exp=1737901629~hmac=b5ea2c77aadb50a7730a46b53b41e594e0e738f76f4143ce9b5b693e278c2d56&w=740" alt="Alternate Text" />
+            </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
+            <div class="w-75">
+                <h2 class="text-center mb-4">Signup</h2>
+                <form method="post" action="/account/signup">
+                    <div class="mb-3">
+                        <label class="form-label">Username:</label>
+                        <input type="text" name="Username" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" name="Password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
