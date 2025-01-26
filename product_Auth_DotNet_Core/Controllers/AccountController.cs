@@ -40,13 +40,14 @@ namespace product_Auth_DotNet_Core.Controllers
             string role = user.Role;
 
             int id = user.Id;
+            HttpContext.Session.SetInt32("UserId", id);
             if (user.Role == "Admin")
             {
-                return RedirectToAction("Index", "Admin", new { value = value, role = role,id=id });
+                return RedirectToAction("Index", "Admin", new { value = value, role = role});
             }
             else
             {
-                return RedirectToAction("Index", "User", new { value = value,id=id });
+                return RedirectToAction("Index", "User", new { value = value });
             }
             
 
@@ -68,6 +69,10 @@ namespace product_Auth_DotNet_Core.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("UserId");
+
+            // Optional: Clear the entire session
+            HttpContext.Session.Clear();
             return RedirectToAction("LogoutRedirect");
         }
         public IActionResult LogoutRedirect()

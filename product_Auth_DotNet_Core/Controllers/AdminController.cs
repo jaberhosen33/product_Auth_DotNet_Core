@@ -19,17 +19,17 @@ namespace product_Auth_DotNet_Core.Controllers
         [HttpGet("admininfo")]
         public IActionResult Admininfo()
         {
-            var user = _context.Users.Find(TempData["adminId"]);
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            var user = _context.Users.Find(userId);
 
             return View(user);
         }
 
         //product Crud
         [HttpGet]
-        public IActionResult Index(string value,string role,int id) {
+        public IActionResult Index(string value,string role) {
             ViewBag.Username = value;
             ViewBag.role = role;
-            TempData["adminId"] = id;
             return View(_context.Products.ToList());
             }
 

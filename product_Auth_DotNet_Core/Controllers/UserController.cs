@@ -15,20 +15,19 @@ namespace product_Auth_DotNet_Core.Controllers
             _context = context;
         }
         [HttpGet("index")]
-        public IActionResult Index(string value,int id)
+        public IActionResult Index(string value)
         {
             ViewBag.Username = value;
-            TempData["id"] = id;
            
+
             return View(_context.Products.ToList());
         }
 
         [HttpGet("userinfo")]
         public IActionResult Userinfo()
         {
-            int data = Convert.ToInt32(TempData["id"]);
-            
-            var user = _context.Users.Find(data);
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            var user = _context.Users.Find(userId);
             
             return View(user);
         }

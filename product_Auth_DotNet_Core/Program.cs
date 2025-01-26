@@ -17,8 +17,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
 builder.Services.AddAuthorization();
-
+//session
+builder.Services.AddSession();
+builder.Services.AddDistributedMemoryCache();
 var app = builder.Build();
+app.UseSession();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
